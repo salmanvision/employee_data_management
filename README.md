@@ -4,7 +4,7 @@ EmployeeDataManagement is a single-page application which is designed to manage 
 
 Setup
 * To start using EmployeeDataManagement, follow these steps:
-* Ruby version 2.7.2
+* Ruby version 3.1.1
 * Rails version 7.1.1
 
 * Clone the repository:
