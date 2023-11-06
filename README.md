@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+EmployeeDataManagement is a single-page application which is designed to manage personal and employment data.
 
-Things you may want to cover:
+Setup
+* To start using EmployeeDataManagement, follow these steps:
+* Ruby version 2.7.2
+* Rails version 7.1.1
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Clone the repository:
+* Navigate to the project directory: cd employee_data_management
+* DB Setup: rails db:create && rails db:migrate
+* Compilation: rails assets:precompile
+* run bundle install
+* Launch the application: ./bin/dev
