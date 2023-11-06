@@ -1,0 +1,43 @@
+= turbo_frame_tag 'personal-data-form' do
+  - if flash[:alert].present?
+  .alert.alert-warning.text-yellow-500= flash[:alert]
+  = form_with model: @personal_data, url: personal_data_path, method: :post, data: { controller: 'personal-data' } do |form|
+    - custom_label_classes = 'mb-1 text-md font-bold text-gray-700'
+    - custom_text_field_classes = 'px-3 py-2 border rounded-lg'
+    .form-group.mb-4
+      .flex.flex-col
+        = form.label :first_name, class: custom_label_classes do
+          | First Name
+          span.text-red-500.required *
+        = form.text_field :first_name, class: custom_text_field_classes, required: true, maxlength: 25, data: { action: 'input->personal-data#validateCharacters', personal_data_target: 'firstNameInput' }
+
+    .form-group.mb-4
+      .flex.flex-col
+        = form.label :last_name, class: custom_label_classes do
+          | Last Name
+          span.text-red-500.required *
+        = form.text_field :last_name, class: custom_text_field_classes, required: true, maxlength: 50, data: { action: 'input->personal-data#validateCharacters', personal_data_target: 'lastNameInput' }
+
+    .form-group.mb-4
+      .flex.flex-col
+        = form.label :nickname, class: custom_label_classes
+        = form.text_field :nickname, class: custom_text_field_classes
+
+    .form-group.mb-4
+      .flex.flex-col
+        = form.label :email, class: custom_label_classes do
+          | Email Address
+          span.text-red-500.required *
+        = form.text_field :email, class: custom_text_field_classes, required: true, data: { personal_data_target: 'email', action: 'blur->personal-data#validateEmail' }
+        = content_tag :div, '', class: 'text-red-500 text-sm mt-1', id: 'emailError', data: { personal_data_target: 'emailError' }
+
+    .form-group.mb-4
+      .flex.flex-col
+        = form.label :phone, class: custom_label_classes do
+          | Phone Number
+          span.text-red-500.required *
+        = form.text_field :phone, class: custom_text_field_classes, required: true, data: { personal_data_target: 'phone', action: 'blur->personal-data#formatPhone' }
+        = content_tag :div, '', class: 'text-red-500 text-sm mt-1', id: 'phoneError', data: { personal_data_target: 'phoneError' }
+
+    = form.submit 'Save', id: 'saveButton', class: 'rounded-lg py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer mt-4'
+    = button_tag 'Cancel', data: { controller: 'personal-data', action: 'personal-data#cancelForm' }, type: 'button', class: 'rounded-lg py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer ml-2'

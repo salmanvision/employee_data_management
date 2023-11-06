@@ -1,0 +1,7 @@
+= form_with(model: employment, url: employments_path, data: { turbo_frame: "_top" } ) do |form|
+  = form.hidden_field :personal_data_id, value: personal_data_id
+  =render 'employments/employment_data_fields', form: form, first_employment: :true
+  #add-employment
+  .inline
+    = link_to 'Add Employment', add_employment_employment_path(personal_data_id), class: 'rounded-lg py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer', data: { turbo_method: :post }
+    = form.submit 'Save', id: 'saveButton', class: 'rounded-lg py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer ml-2'
