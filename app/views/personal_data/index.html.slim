@@ -1,5 +1,4 @@
 .container.flex.flex-col.justify-center.items-center
   - if flash[:notice].present?
   .alert.alert-success.text-green-500= flash[:notice]
-  h1.mb-4  Welcome to Employee Management System
   = link_to 'Personal Data', new_personal_datum_path, method: :get, data: { turbo_frame: "modal" }, class: 'rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium mt-4'
